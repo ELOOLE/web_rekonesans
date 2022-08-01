@@ -44,6 +44,14 @@ def logout(): #define the logout function
     session.clear()
     return redirect(url_for('index'))
 
+def projekty():
+    return os.walk('.')
+
+@app.route('/create_projekt')
+def create_projekt(dirname):
+    os.makedirs(dirname)
+    return 'Utworzony'
+
 #with app.test_request_context():
 #    print(url_for)
 #    print(url_for('index'))

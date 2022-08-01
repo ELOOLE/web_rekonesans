@@ -8,21 +8,9 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bulma.min.css') }}">
 </head>
 <body>
-<section class="hero is-fullheight" style="background-color:#C4FCEF;">
-    <div class="hero-head">
+<section class="hero is-fullheight" style="background-color:#c4fcc4;">
+    <div class="hero-head">     
         <nav class="navbar">
-          <div class="navbar-item">
-            <div class="buttons">
-              <a href="{{ url_for('index') }}" class="button is-primary">
-                <strong>+ Stworz projekt</strong>
-              </a>
-              {{ print(os.walk('.')) }}
-              <a href="{{ url_for('index') }}" class="button is-primary">
-                <strong>+ Stworz projekt</strong>
-              </a>
-            </div>
-          </div>
-
             <div class="container">
                 <div id="navbarMenuHeroA" class="navbar-menu">
                     <div class="navbar-end">
@@ -32,7 +20,7 @@
                         <a href="{{ url_for('about') }}" class="navbar-item">
                             About
                         </a>
-
+                        
                         {% if not session.get('username'): %}
                             <div class="navbar-item">
                               <div class="buttons">
@@ -54,7 +42,6 @@
                                 </a>
                               </div>
                             </div>
-
                         {% endif %}
                     </div>
                 </div>
@@ -62,7 +49,24 @@
         </nav>
         {% if session.get('username'):%}
         <nav class="navbar">
-            <div class="container">              
+            <div class="container">   
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                  Projekt
+                </a>
+        
+                <div class="navbar-dropdown">
+                  {% for i in range(0,5) %}
+                  <a class="navbar-item">
+                    {{i}}
+                  </a>
+                  {% endfor %}
+                  <hr class="navbar-divider">
+                  <a class="navbar-item">
+                    + Stwórz
+                  </a>
+                </div>
+              </div>           
                 <div id="navbarMenuHeroB" class="navbar-brand">
                     <div class="navbar-end">
                         <a href="{{ url_for('index') }}" class="navbar-item">
@@ -98,7 +102,7 @@
         </nav>
         {% endif %}
     </div>
-    <div class="hero-body">
+    <div class="hero-body" style="background-color:#93ca93;">
         <div class="container has-text-centered">
             {% block content %}{% endblock %}
         </div>
